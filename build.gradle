@@ -1,0 +1,18 @@
+
+subprojects {    
+    repositories {
+        mavenCentral()
+    }
+}
+project("a") {
+    apply plugin: "java-library"
+}
+project("b") {
+    apply plugin: "scala"
+    apply plugin: "java"
+
+    dependencies {
+        implementation ("org.scala-lang:scala3-library_3:3.2.1")
+        implementation project(":a")
+    }
+}
